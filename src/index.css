@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    @apply bg-lol-bg text-lol-gold-light font-body antialiased;
+    background-image:
+      radial-gradient(ellipse at 20% 0%, rgba(11,196,227,0.04) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 0%, rgba(200,155,60,0.04) 0%, transparent 50%);
+    min-height: 100vh;
+  }
+
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: #0D1117; }
+  ::-webkit-scrollbar-thumb { background: #2A3A5C; border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: #C89B3C; }
+}
+
+@layer components {
+  .lol-border {
+    border: 1px solid #2A3A5C;
+    position: relative;
+  }
+  .lol-border::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    background: linear-gradient(135deg, rgba(200,155,60,0.3) 0%, transparent 50%, rgba(200,155,60,0.1) 100%);
+    pointer-events: none;
+  }
+
+  .gold-text {
+    @apply text-lol-gold;
+    text-shadow: 0 0 12px rgba(200,155,60,0.4);
+  }
+
+  .card {
+    @apply bg-lol-bg-card border border-lol-border rounded-lg relative overflow-hidden;
+  }
+  .card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(200,155,60,0.4), transparent);
+  }
+
+  .champion-slot {
+    @apply relative flex flex-col items-center justify-center rounded overflow-hidden cursor-pointer
+           transition-all duration-200 select-none;
+  }
+
+  .btn-gold {
+    @apply bg-lol-gold-dark text-lol-gold-light border border-lol-gold font-display tracking-wider
+           px-4 py-2 rounded transition-all duration-200 text-sm;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+  }
+  .btn-gold:hover {
+    @apply bg-lol-gold;
+    color: #0A0E17;
+    box-shadow: 0 0 16px rgba(200,155,60,0.5);
+  }
+
+  .btn-ghost {
+    @apply border border-lol-border text-lol-parchment px-4 py-2 rounded
+           transition-all duration-200 text-sm;
+  }
+  .btn-ghost:hover {
+    @apply border-lol-gold text-lol-gold;
+  }
+
+  .tag-pill {
+    @apply text-xs px-2 py-0.5 rounded-full border font-medium;
+  }
+}
+
+@layer utilities {
+  .text-shadow-gold {
+    text-shadow: 0 0 12px rgba(200,155,60,0.6);
+  }
+
+  .glow-blue {
+    box-shadow: 0 0 16px rgba(11,196,227,0.4);
+  }
+  .glow-red {
+    box-shadow: 0 0 16px rgba(232,64,87,0.4);
+  }
+  .glow-gold {
+    box-shadow: 0 0 16px rgba(200,155,60,0.4);
+  }
+
+  .divider-gold {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(200,155,60,0.4), transparent);
+  }
+}
